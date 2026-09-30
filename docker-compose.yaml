@@ -1,4 +1,13 @@
 services:
+
+  mongo:
+    image: mongo:latest
+    container_name: employee_activity_monitoring_mongo_container
+    restart: always
+    ports:
+      - "27017:27017"
+    networks:
+      - employee
   backend_service:
     build: ./backend
     container_name: employee_activity_monitoring_backend_container
@@ -14,6 +23,8 @@ services:
   client_service:
     build: ./client
     container_name: employee_activity_monitoring_client_container
+    args:
+      - VITE_API_URL=http://localhost:10.51.226.253
     restart: always
     env_file:
       - ./client/.env
