@@ -97,7 +97,7 @@ const Attendance = () => {
             const image = canvas.toDataURL('image/jpeg', 0.6);
             try {
                 const res = await axios.post(
-                    `${import.meta.env.VITE_API_URL}/api/face-recognize`,
+                    `${import.meta.env.VITE_API_URL}/face-recognize`,
                     { image },
                 );
                 const detected = res.data.results || [];

@@ -1,5 +1,4 @@
 services:
-
   backend_service:
     build: ./backend
     container_name: employee_activity_monitoring_backend_container
@@ -7,7 +6,9 @@ services:
     env_file:
       - ./backend/.env
     ports:
-      - "4000:4000"
+        - "4000:4000"
+    networks:
+      - employee
 
 
   client_service:
@@ -20,4 +21,24 @@ services:
       - "5173:5173"
     depends_on:
       - backend_service
+    networks:
+      - employee
 
+  # nginx:
+  #   image: nginx:alpine
+  #   container_name: employee-activity-monitering
+  #   restart: unless-stopped
+  #   volumes:
+  #     - ./nginx.conf:/etc/nginx/nginx.conf:ro
+  #   ports:
+  #     - "80:80"
+  #   depends_on:
+  #     -  client_service
+  #     -  backend_service
+  #   networks:
+  #     - employee
+
+
+networks:
+    employee:
+      driver: bridge

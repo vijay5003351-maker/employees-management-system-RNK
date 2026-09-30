@@ -87,7 +87,7 @@ export const DataProvider = ({ children }) => {
         try {
             const endpoint = location.state?.employeeId
                 ? `${import.meta.env.VITE_API_URL}/fun/update`
-                : `${import.meta.env.VITE_API_URL}/api/add-employee`;
+                : `${import.meta.env.VITE_API_URL}/add-employee`;
 
             const formData = new FormData();
 

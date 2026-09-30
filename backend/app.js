@@ -12,7 +12,6 @@ const addEmployeeRoute = require('./Routes/addEmployeeRoute');
 const PORT = process.env.PORT || 4000;
 const eventLogger = require('./eventsLogger');
 
-
 const connectDb = async () => {
     try {
         await mongoose.connect(process.env.MONGO_URI);
@@ -42,12 +41,12 @@ app.use((req, res, next) => {
     next();
 });
 
-app.get('/ping', (req, res) => {
+app.get('/api/ping', (req, res) => {
     res.send('Server OK');
 });
 
-app.use('/fun', adminRoutes);
-app.use('/project', projectRoutes);
+app.use('/api/fun', adminRoutes);
+app.use('/api/project', projectRoutes);
 app.use('/api/face-recognize', faceRecognitionRoute);
 app.use('/api/add-employee', addEmployeeRoute);
 
