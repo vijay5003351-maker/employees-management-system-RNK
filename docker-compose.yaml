@@ -24,7 +24,7 @@ services:
     build:
       context: ./client
       args:
-        VITE_API_URL: "http://10.51.226.253:4000"
+        VITE_API_URL: "http://localhost:4000/api"
     container_name: employee_activity_monitoring_client_container
     restart: always
     env_file:
